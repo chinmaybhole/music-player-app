@@ -1,0 +1,128 @@
+/* Browser take by default 8px */
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+:root {
+    --little-dark:rgba(255, 255, 255, 0.899);
+    --dark: #812edf5c;
+    --primary: #9E4784;
+    --secondary:#D27685;
+
+  }
+
+html{
+    font-size: 62.5%; 
+    /* Basic 100% = 16px so 62.5% = 10px and 1rem will be 10px */
+}
+
+.main{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--little-dark);
+    display: grid;
+    place-items: center;
+}
+
+.music-box{
+    width: 35rem;
+    height: 55rem;
+    background-color: var(--dark);
+    text-align: center;
+    border-radius: 2rem;
+    padding: 3rem;
+    box-shadow: 0 1.2rem 3rem 0.5rem #812edf5c;
+}
+
+.music-box #title{
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    word-spacing: 0.5rem;
+    color: var(--primary);
+    margin: 2rem 0rem 0.5rem 0;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 0 0.3rem 0.5rem rgba(255, 255, 255, 0.3);
+}
+
+.music-box #artist{
+    color: var(--secondary);
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom:4rem ;
+
+}
+
+.img-container{
+    width: 25rem;
+    height: 25rem;
+    margin: auto;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.controls-icon{
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 5rem;
+    align-items: center;
+
+}
+
+
+.controls-icon .fa-solid{
+    color: var(--primary);
+    font-size: 2rem;
+    cursor: pointer;
+    filter: drop-shadow(0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.3));
+}
+
+.controls-icon .main-btn{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    color: var(--primary);
+    font-size: 2.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls-icon .fa-solid:hover{
+    color: var(--secondary);
+    filter: drop-shadow(1rem 0.5rem 1rem rgba(0,0,0,0.25));
+}
+
+.controls-icon #play:hover{
+    background-color: var(--primary);
+    color: var(--secondary);
+    box-shadow: 0 1rem 2rem 0.2rem rgba(0, 0, 0, 0.3);
+}
+
+.animation{
+    animation: rotatePlayer 24s linear infinite;
+}
+
+@keyframes rotatePlayer {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

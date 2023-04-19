@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <script src="https://kit.fontawesome.com/3a644578de.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="music-box">
+            <h2 id="title">Bin Tere</h2>
+            <h3 id="artist">Vishal & Shekhar</h3>
+            <div class="img-container">
+                <img src="song_img/bin_tere.jpg" id="img" alt="song-img">
+            </div>
+            <audio src="songs/bintere.mp3" id="audio"></audio>
+            <div class="controls-icon">
+                <i class="fa-solid fa-backward" id="prev"></i>
+                <i class="fa-solid fa-play main-btn" id="play"></i>
+                <i class="fa-solid fa-forward" id="next"></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        const img = document.querySelector("img")
+        const music = document.querySelector("audio")
+        const play = document.getElementById("play")
+
+        const title = document.getElementById("title")
+        const artist = document.getElementById("artist")
+        const prev = document.getElementById("prev")
+        const next = document.getElementById("next")
+
+        let songs = [
+        {
+            name:"bintere",
+            title: "Bin Tere",
+            artist: "Vishal & Shekhar",
+    },
+    {
+      name: "until",
+      title: "Until I found you",
+      artist: "Steven Sanchez",
+    },
+    {
+      name:"perfect",
+      title: "Perfect",
+      artist: "Arjit Singh",
+    },
+  ];
+        let isplaying = false
+        const playSong =() =>{
+            isplaying = true
+            music.play()
+            play.classList.replace("fa-play","fa-pause")
+            img.classList.add("animation")
+        }
+        const pauseSong =() =>{
+            isplaying = false
+            music.pause()
+            play.classList.replace("fa-pause","fa-play")
+            img.classList.remove("animation")
+        }    
+        play.addEventListener("click",()=>{
+            isplaying?pauseSong():playSong()
+        })
+        const loadSong = (song)=>{
+            title.textContent = song.title,
+            artist.textContent = song.artist,
+            img.src = "song_img/"+song.name+".jpg",
+            music.src = "songs/"+song.name+".mp3"
+        }
+        songIndex = 0
+        loadSong(songs[songIndex])
+        const nextSong = ()=>{
+            songIndex = (songIndex+1)%songs.length
+            loadSong(songs[songIndex])
+            playSong()
+        }
+        const prevSong = ()=>{
+            songIndex = (songIndex-1 + songs.length)%songs.length
+            loadSong(songs[songIndex])
+            playSong()
+            
+        }
+        next.addEventListener("click",nextSong)
+        prev.addEventListener("click",prevSong)
+    </script>
+</body>
+</html>
